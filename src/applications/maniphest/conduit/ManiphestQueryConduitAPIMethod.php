@@ -19,6 +19,7 @@ final class ManiphestQueryConduitAPIMethod extends ManiphestConduitAPIMethod {
       ManiphestTaskQuery::STATUS_WONTFIX,
       ManiphestTaskQuery::STATUS_INVALID,
       ManiphestTaskQuery::STATUS_SPITE,
+      ManiphestTaskQuery::STATUS_CONFIGISSUE,
       ManiphestTaskQuery::STATUS_DUPLICATE,
     );
     $status_const = $this->formatStringConstants($statuses);

@@ -11,6 +11,7 @@ final class ManiphestTaskStatus extends ManiphestConstants {
   const STATUS_CLOSED_INVALID     = 'invalid';
   const STATUS_CLOSED_DUPLICATE   = 'duplicate';
   const STATUS_CLOSED_SPITE       = 'spite';
+  const STATUS_CLOSED_CONFIGISSUE = 'configissue';
 
   const SPECIAL_DEFAULT     = 'default';
   const SPECIAL_CLOSED      = 'closed';

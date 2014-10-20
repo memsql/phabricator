@@ -144,6 +144,22 @@ final class PhabricatorManiphestConfigOptions
           'as spite',
         ),
       ),
+      'configissue' => array(
+        'name' => pht('Config Issue'),
+        'name.full' => pht('Closed, Config Issue'),
+        'name.action' => pht('Configissued'),
+        'transaction.icon' => 'fa-trophy',
+        'silly' => true,
+        'closed' => true,
+        'prefixes' => array(
+          'configissue',
+          'configissues',
+          'configissued',
+        ),
+        'suffixes' => array(
+          'as config issue',
+        ),
+      ),
     );
 
     $status_description = $this->deformat(pht(<<<EOTEXT
