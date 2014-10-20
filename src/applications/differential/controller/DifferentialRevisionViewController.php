@@ -658,7 +658,9 @@ final class DifferentialRevisionViewController extends DifferentialController {
     $actions = array_keys(array_filter($actions));
     $actions_dict = array();
     foreach ($actions as $action) {
-      $actions_dict[$action] = DifferentialAction::getActionVerb($action);
+      if ($action != DifferentialAction::ACTION_REJECT) {
+        $actions_dict[$action] = DifferentialAction::getActionVerb($action);
+      }
     }
 
     return $actions_dict;
