@@ -7,6 +7,7 @@ $status_map = array(
   3 => 'invalid',
   4 => 'duplicate',
   5 => 'spite',
+  6 => 'configissue',
 );
 
 $conn_w = id(new ManiphestTask())->establishConnection('w');

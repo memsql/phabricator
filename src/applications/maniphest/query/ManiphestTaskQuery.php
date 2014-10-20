@@ -32,6 +32,7 @@ final class ManiphestTaskQuery extends PhabricatorCursorPagedPolicyAwareQuery {
   const STATUS_WONTFIX      = 'status-wontfix';
   const STATUS_INVALID      = 'status-invalid';
   const STATUS_SPITE        = 'status-spite';
+  const STATUS_CONFIGISSUE  = 'status-configissue';
   const STATUS_DUPLICATE    = 'status-duplicate';
 
   private $statuses;
@@ -412,11 +413,12 @@ final class ManiphestTaskQuery extends PhabricatorCursorPagedPolicyAwareQuery {
 
   private function buildStatusWhereClause(AphrontDatabaseConnection $conn) {
     static $map = array(
-      self::STATUS_RESOLVED   => ManiphestTaskStatus::STATUS_CLOSED_RESOLVED,
-      self::STATUS_WONTFIX    => ManiphestTaskStatus::STATUS_CLOSED_WONTFIX,
-      self::STATUS_INVALID    => ManiphestTaskStatus::STATUS_CLOSED_INVALID,
-      self::STATUS_SPITE      => ManiphestTaskStatus::STATUS_CLOSED_SPITE,
-      self::STATUS_DUPLICATE  => ManiphestTaskStatus::STATUS_CLOSED_DUPLICATE,
+      self::STATUS_RESOLVED     => ManiphestTaskStatus::STATUS_CLOSED_RESOLVED,
+      self::STATUS_WONTFIX      => ManiphestTaskStatus::STATUS_CLOSED_WONTFIX,
+      self::STATUS_INVALID      => ManiphestTaskStatus::STATUS_CLOSED_INVALID,
+      self::STATUS_SPITE        => ManiphestTaskStatus::STATUS_CLOSED_SPITE,
+      self::STATUS_CONFIGISSUE  => ManiphestTaskStatus::STATUS_CLOSED_CONFIGISSUE,
+      self::STATUS_DUPLICATE    => ManiphestTaskStatus::STATUS_CLOSED_DUPLICATE,
     );
 
     switch ($this->status) {
