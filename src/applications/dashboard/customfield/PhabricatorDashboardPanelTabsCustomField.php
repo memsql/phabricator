@@ -87,7 +87,7 @@ final class PhabricatorDashboardPanelTabsCustomField
     }
 
     $out = array();
-    for ($ii = 1; $ii <= 6; $ii++) {
+    for ($ii = 1; $ii <= 20; $ii++) {
       $tab = idx($value, ($ii - 1), array());
       $panel = idx($tab, 'panelID', null);
       $panel_id = array();
