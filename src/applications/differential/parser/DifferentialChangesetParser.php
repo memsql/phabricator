@@ -2,7 +2,7 @@
 
 final class DifferentialChangesetParser extends Phobject {
 
-  const HIGHLIGHT_BYTE_LIMIT = 262144;
+  const HIGHLIGHT_BYTE_LIMIT = 2097152;
 
   protected $visible      = array();
   protected $new          = array();
