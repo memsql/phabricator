@@ -93,19 +93,53 @@ final class ManiphestTaskDetailController extends ManiphestController {
     $timeline->setQuoteRef($monogram);
     $comment_view->setTransactionTimeline($timeline);
 
-    return $this->newPage()
+    $page_out = $this->newPage()
       ->setTitle($title)
       ->setCrumbs($crumbs)
       ->setPageObjectPHIDs(
         array(
           $task->getPHID(),
-        ))
-      ->appendChild(
+        ));
+
+    // check to see if the custom.jira:id field is specified
+    foreach ($field_list->getFields() as $field) {
+        $key = $field->getFieldKey();
+        $value = $field->getConduitDictionaryValue();
+        if ($key === "std:maniphest:jira:id" && $value) {
+            $url = "https://memsql.atlassian.net/browse/" . $value;
+            if (isset($_GET['redirect_to_jira'])) {
+                header("Location: " . $url);
+                exit();
+            }
+
+            $page_out->appendChild(id(new PHUIInfoView())
+                ->setSeverity(PHUIInfoView::SEVERITY_ERROR)
+                ->setTitle("Migrated to JIRA")
+                ->appendChild(
+                    hsprintf(
+                        "<div style='height:30px'></div>" .
+                        "<div style='font-size:30px;line-height:50px;'>" .
+                            "This task has been migrated to: <br />" .
+                            "<a href='" . $url . "'>" .
+                                $url .
+                            "</a>" .
+                            "<br />" .
+                            "This page is maintained for reference only." .
+                        "</div>" .
+                        "<div style='height:30px'></div>"
+                    )
+                )
+            );
+        }
+    }
+
+    $page_out->appendChild(
         array(
           $object_box,
           $timeline,
           $comment_view,
-        ));
+      ));
+    return $page_out;
   }
 
   private function buildHeaderView(ManiphestTask $task) {
