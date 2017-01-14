@@ -58,7 +58,7 @@ final class ManiphestEditEngine
   }
 
   protected function getEditorURI() {
-    return $this->getApplication()->getApplicationURI('task/edit/');
+      return $this->getApplication()->getApplicationURI('task/edit/');
   }
 
   protected function getCommentViewHeaderText($object) {
